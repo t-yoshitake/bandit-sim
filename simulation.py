@@ -71,11 +71,13 @@ if __name__ == '__main__':
 
         for i_ave in range(ave_max):
 
-            # サンプリングの実行
-            rewards_ += algorithm_(*argument_)
+            # アルゴリズムの実行
+            rewards_out = algorithm_(*argument_)
+
+            rewards_ += rewards_out
 
             # 累積報酬の計算
-            cum_rewards_[i_ave] = np.sum(rewards_)
+            cum_rewards_[i_ave] = np.sum(rewards_out)
         
         rewards_ /= ave_max
 
