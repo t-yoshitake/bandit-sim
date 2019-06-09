@@ -1,1 +1,4 @@
 __pycache__/
+.DS_Store
+figs/.DS_Store
+results/.DS_Store
