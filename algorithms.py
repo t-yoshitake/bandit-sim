@@ -129,4 +129,4 @@ def ucb_score(adv: Advertisement, i_t: int) -> float:
     """ UCBスコアを計算して返す。
     """
 
-    return adv.total_clicked / (i_t + 1) + math.sqrt(math.log(i_t + 1) / 2 / adv.total_showed)
+    return adv.total_clicked / adv.total_showed + math.sqrt(math.log(i_t + 1) / 2 / adv.total_showed)

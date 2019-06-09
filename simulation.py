@@ -17,11 +17,11 @@ if __name__ == '__main__':
     random.seed(1)
 
     # 広告ctrの生成
-    ctrs = ctr_exp(n=100, ave=0.01)
+    ctrs = ctr_exp(n=50, ave=0.08)
 
     # シミュレーション条件
-    t_max = 5000 # 最大時間
-    ave_max = 500 # サンプリングの繰り返し数
+    t_max = 10000 # 最大時間
+    ave_max = 5000 # サンプリングの繰り返し数
 
     # 報酬
     rewards = {
