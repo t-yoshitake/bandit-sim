@@ -55,7 +55,7 @@ if __name__ == '__main__':
     fig_ctr('figs/ctr_hist.png', ctrs, bins=100)
 
     # 報酬の推移図
-    fig_rewards('figs/rewards.png', rewards, t_max, points_in_bin=10)
+    fig_rewards('figs/rewards.png', rewards, t_max, points_in_bin=1)
 
     # 累積報酬
     fig_cum_rewards('figs/cum_rewards', cum_rewards)

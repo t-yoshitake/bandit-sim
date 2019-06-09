@@ -16,13 +16,11 @@ if __name__ == '__main__':
     np.random.seed(1)
     random.seed(1)
 
-    # 広告インスタンスの作成
+    # 広告ctrの生成
     ctrs = ctr_exp(n=100, ave=0.01)
-    #ctrs = ctr_exp(n=1000, lambda_exp=1000)
-    adv_list = [Advertisement(ctr) for ctr in ctrs]
 
     # シミュレーション条件
-    t_max = 20000 # 最大時間
+    t_max = 5000 # 最大時間
     ave_max = 500 # サンプリングの繰り返し数
 
     # 報酬
@@ -44,21 +42,18 @@ if __name__ == '__main__':
     }
 
     # アルゴリズム関数
+    def egreedy_03(adv_list: list, t_max: int) -> np.array:
+        return egreedy(adv_list, t_max, epsilon=0.3)
+
+    def egreedy_06(adv_list: list, t_max: int) -> np.array:
+        return egreedy(adv_list, t_max, epsilon=0.6)
+
     algorithm = {
         "random"      : random_sampling,
-        "egreedy-0.3" : egreedy,
-        "egreedy-0.6" : egreedy,
+        "egreedy-0.3" : egreedy_03,
+        "egreedy-0.6" : egreedy_06,
         "ucb"         : ucb_policy,
         "thompson"    : thompson_sampling,
-    }
-
-    # 関数引数
-    argument = {
-        "random"      : (adv_list, t_max),
-        "egreedy-0.3" : (adv_list, t_max, 0.3),
-        "egreedy-0.6" : (adv_list, t_max, 0.6),
-        "ucb"         : (adv_list, t_max),
-        "thompson"    : (adv_list, t_max),
     }
 
     # シミュレーション実行
@@ -67,12 +62,14 @@ if __name__ == '__main__':
         rewards_ = rewards[algo_type]
         cum_rewards_ = cum_rewards[algo_type]
         algorithm_ = algorithm[algo_type]
-        argument_ = argument[algo_type]
 
         for i_ave in range(ave_max):
+            
+            # 広告インスタンスの生成
+            adv_list = [Advertisement(ctr) for ctr in ctrs]
 
             # アルゴリズムの実行
-            rewards_out = algorithm_(*argument_)
+            rewards_out = algorithm_(adv_list, t_max)
 
             rewards_ += rewards_out
 
