@@ -1,6 +1,7 @@
 # bandit-sim
 ## 概要
 バンディット問題の基本的な方策アルゴリズムのシミュレーションプログラム
+https://qiita.com/tyoshitake/items/2ed890c56945c43774f5
 
 ## 構成
 - simulation.py : シミュレーションを実行するメインプログラム
@@ -31,4 +32,5 @@ resultsディレクトリ内の結果ファイル(.pickle)を読み込み、作�
 - 累積報酬の比較図
   
 # 参考
-
+qiita記事
+https://qiita.com/tyoshitake/items/2ed890c56945c43774f5
